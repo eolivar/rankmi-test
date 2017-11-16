@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version: 2.4.2
+Rails version: 5.1.4
+PostgreSql version: 9.5
 
-Things you may want to cover:
+After cloning the project you should execute:
+- bundle install
+- bundle exec rake db:create db:migrate db:seed
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Endpoints:
+- POST /insert_child -> Inserts a child on a given parent
+- PUT /update_area/:id -> Updates a given area
+- GET /get_areas -> Get all the areas
