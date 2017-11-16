@@ -6,6 +6,7 @@
 
 After cloning the project you should execute:
 - bundle install
+- Change the information on database.yml as needed
 - bundle exec rake db:create db:migrate db:seed
 
 Endpoints:
