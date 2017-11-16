@@ -7,14 +7,18 @@ class Area < ActiveRecord::Base
 
   after_commit :update_note_parent
 
+  def update_left_parent
+    if !self.children.empty?
+      self.children.first.save
+    end
+  end
+
   private
 
   # Updates the note attribute on every parent on each level
   def update_note_parent
-    puts "HOLA #{self.id}"
     if !self.parent.nil?
       self.parent.note = self.parent.children.sum(:note) / self.parent.children.size
-      puts "ID: #{self.id}"
       self.parent.save
     end
   end
