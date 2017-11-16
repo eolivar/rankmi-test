@@ -38,7 +38,7 @@ class AreasController < ActionController::Base
       return
     end
 
-    # If an area left its parent, that portion of the company shoud be updated as well
+    # If an area left its parent, that portion of the company should be updated as well
     old_parent = nil
     if @area.parent_id_changed?
       old_parent = @area.parent_id_was
@@ -81,6 +81,10 @@ class AreasController < ActionController::Base
 
   # Initializes the area instance before working on it
   def set_area
-    @area = Area.find(params[:id])
+    begin
+      @area = Area.find(params[:id])
+    rescue
+      render json: { status: "failure", message: "Area does not exist" }
+    end
   end
 end
